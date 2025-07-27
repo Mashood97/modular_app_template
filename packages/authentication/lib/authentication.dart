@@ -99,7 +99,8 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 24),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
+                height: 50,
+                child: FilledButton(
                   onPressed: _login,
                   child: const Text('Login'),
                 ),
