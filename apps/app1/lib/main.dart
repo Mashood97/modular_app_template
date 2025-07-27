@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       routes.add(StatefulShellBranch(routes: AuthModule.routes));
       routes.add(StatefulShellBranch(routes: HomeModule.routes));
       routes.add(StatefulShellBranch(routes: OrderModule.routes));
-      // routes.add(StatefulShellBranch(routes: ProfileModule.routes));
+      routes.add(StatefulShellBranch(routes: ProfileModule.routes));
     } catch (_) {}
     return routes;
   }
@@ -73,7 +73,7 @@ class _BottomBarShellState extends State<BottomBarShell> {
     AuthModule.tab,
     OrderModule.tab,
     HomeModule.tab,
-    // ProfileModule.tab,
+    ProfileModule.tab,
   ];
 
   void _onTap(int index) {
@@ -87,7 +87,10 @@ class _BottomBarShellState extends State<BottomBarShell> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: widget.navigationShell,
+
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // 🔥 Force fixed mode
+
         currentIndex: widget.navigationShell.currentIndex,
         onTap: _onTap,
         items: bottomTabs,
