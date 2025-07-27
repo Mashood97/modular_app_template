@@ -1,0 +1,7 @@
+name: modular_app
+packages:
+  - apps/*
+  - packages/*
+
+scripts:
+  bootstrap: flutter pub get

@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: authentication,home,orders
+dependency_overrides:
+  authentication:
+    path: ../../packages/authentication
+  home:
+    path: ../../packages/home
+  orders:
+    path: ../../packages/orders
