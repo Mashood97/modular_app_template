@@ -41,6 +41,8 @@ dependencies:
     path: ../../packages/home
   profile:
     path: ../../packages/profile
+  shared:
+    path: ../../packages/shared
 
 dev_dependencies:
   flutter_test:

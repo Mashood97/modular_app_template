@@ -41,6 +41,8 @@ dependencies:
     path: ../../packages/home
   orders:
     path: ../../packages/orders
+  shared:
+    path: ../../packages/shared
 
 dev_dependencies:
   flutter_test:
