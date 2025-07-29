@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/packages/home/melos_home.iml" filepath="$PROJECT_DIR$/packages/home/melos_home.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/orders/melos_orders.iml" filepath="$PROJECT_DIR$/packages/orders/melos_orders.iml" />
       <module fileurl="file://$PROJECT_DIR$/packages/profile/melos_profile.iml" filepath="$PROJECT_DIR$/packages/profile/melos_profile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/packages/shared/melos_shared.iml" filepath="$PROJECT_DIR$/packages/shared/melos_shared.iml" />
       <module fileurl="file://$PROJECT_DIR$/melos_modular_app.iml" filepath="$PROJECT_DIR$/melos_modular_app.iml" />
     </modules>
   </component>
