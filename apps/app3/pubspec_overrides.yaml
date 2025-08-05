@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: authentication,home,orders
+# melos_managed_dependency_overrides: authentication,home,orders,shared
 dependency_overrides:
   authentication:
     path: ../../packages/authentication
@@ -6,3 +6,5 @@ dependency_overrides:
     path: ../../packages/home
   orders:
     path: ../../packages/orders
+  shared:
+    path: ../../packages/shared

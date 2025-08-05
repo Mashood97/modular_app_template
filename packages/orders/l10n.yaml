@@ -1,0 +1,5 @@
+arb-dir: lib/l10n/arb
+template-arb-file: app_en.arb
+output-localization-file: order_localization.dart
+output-class: OrderLocalizations
+nullable-getter: false

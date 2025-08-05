@@ -1,24 +1,52 @@
+import 'package:core/app_module.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:profile/l10n/arb/profile_localization.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
-
-  @override
-  Widget build(BuildContext context) => const ProfileView();
-}
-
-final routes = <GoRoute>[
-  GoRoute(path: '/profile', builder: (context, state) => const ProfilePage()),
+final _appRoutes = <GoRoute>[
+  GoRoute(
+    path: _RouteNames.profileRouteName,
+    builder: (context, state) => const _ProfilePage(),
+  ),
 ];
 
-final BottomNavigationBarItem tab = BottomNavigationBarItem(
-  icon: Icon(Icons.person),
-  label: 'Profile',
-);
+class ProfileModule extends AppModule {
+  @override
+  String get key => 'profile';
 
-class ProfileView extends StatelessWidget {
-  const ProfileView({super.key});
+  @override
+  NavigationTab? get navigationTab => NavigationTab(
+    icon: Icons.person,
+    label: 'Profile',
+    initialLocation: _RouteNames.profileRouteName,
+  );
+
+  @override
+  List<RouteBase> get routes => _appRoutes;
+
+  @override
+  void init() {
+    //Setup your DI here.
+  }
+
+  @override
+  LocalizationsDelegate? get localizationDelegate =>
+      ProfileLocalizations.delegate;
+}
+
+class _RouteNames {
+  static const String profileRouteName = '/profile';
+}
+
+class _ProfilePage extends StatelessWidget {
+  const _ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) => const _ProfileView();
+}
+
+class _ProfileView extends StatelessWidget {
+  const _ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {

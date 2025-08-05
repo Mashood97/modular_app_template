@@ -1,4 +1,4 @@
-# melos_managed_dependency_overrides: authentication,home,profile
+# melos_managed_dependency_overrides: authentication,home,profile,shared
 dependency_overrides:
   authentication:
     path: ../../packages/authentication
@@ -6,3 +6,5 @@ dependency_overrides:
     path: ../../packages/home
   profile:
     path: ../../packages/profile
+  shared:
+    path: ../../packages/shared

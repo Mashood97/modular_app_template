@@ -11,6 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
   go_router:
+  core:
+    path: ../../packages/core
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -22,6 +26,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
 
   # To add assets to your package, add an assets section, like this:
   # assets:

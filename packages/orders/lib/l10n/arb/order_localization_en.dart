@@ -1,0 +1,22 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'order_localization.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for English (`en`).
+class OrderLocalizationsEn extends OrderLocalizations {
+  OrderLocalizationsEn([String locale = 'en']) : super(locale);
+
+  @override
+  String get locale => 'en';
+
+  @override
+  String get loginTitle => 'Login';
+
+  @override
+  String get signupTitle => 'Sign Up';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
+}

@@ -1,37 +1,74 @@
+import 'package:authentication/l10n/arb/authentication_localization.dart';
+import 'package:core/app_module.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'l10n/authentication_localization.dart';
 
-class AuthPage extends StatelessWidget {
-  const AuthPage({super.key});
-
-  @override
-  Widget build(BuildContext context) => const LoginPage();
-}
-
-final routes = <GoRoute>[
+final _appRoutes = <GoRoute>[
   GoRoute(
-    path: RouteNames.authRouteName,
-    builder: (context, state) => const AuthPage(),
+    path: _RouteNames.authRouteName,
+    builder: (context, state) => const _AuthPage(),
+    routes: [
+      GoRoute(path: 'signup', builder: (context, state) => const SignupPage()),
+      GoRoute(
+        path: 'forgot-password',
+        builder: (context, state) => const ForgotPasswordPage(),
+      ),
+      GoRoute(
+        path: 'verify-otp',
+        builder: (context, state) => const VerifyOtpPage(),
+      ),
+    ],
   ),
 ];
 
-final BottomNavigationBarItem tab = BottomNavigationBarItem(
-  icon: Icon(Icons.login),
-  label: 'Auth',
-);
+class AuthModule extends AppModule {
+  @override
+  String get key => 'auth';
 
-class RouteNames {
+  @override
+  NavigationTab? get navigationTab => NavigationTab(
+    icon: Icons.login,
+    label: 'Auth',
+    initialLocation: _RouteNames.authRouteName,
+  );
+
+  @override
+  List<RouteBase> get routes => _appRoutes;
+
+  @override
+  void init() {
+    //Setup your DI here.
+
+    //  Then wherever you're loading your modules (e.g., AppModulesLoader or AppShell), call:
+    //  for (final module in appModules) {
+    //    module.init();
+    //  }
+  }
+
+  @override
+  LocalizationsDelegate? get localizationDelegate => AuthLocalizations.delegate;
+}
+
+class _AuthPage extends StatelessWidget {
+  const _AuthPage();
+
+  @override
+  Widget build(BuildContext context) => const _LoginPage();
+}
+
+class _RouteNames {
   static const String authRouteName = "/auth";
 }
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class _LoginPage extends StatefulWidget {
+  const _LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<_LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<_LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -59,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: Text(context.l10n.loginTitle)),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -105,10 +142,63 @@ class _LoginPageState extends State<LoginPage> {
                   child: const Text('Login'),
                 ),
               ),
+              const SizedBox(height: 14),
+              TextButton(
+                onPressed: () => context.go('/auth/signup'),
+                child: const Text('Sign Up'),
+              ),
+
+              const SizedBox(height: 14),
+              TextButton(
+                onPressed: () => context.go('/auth/forgot-password'),
+                child: const Text('Forgot Password?'),
+              ),
+
+              const SizedBox(height: 14),
+              TextButton(
+                onPressed: () => context.go('/auth/verify-otp'),
+                child: const Text('Verify OTP'),
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Signup')),
+      body: const Center(child: Text('Signup Page')),
+    );
+  }
+}
+
+class ForgotPasswordPage extends StatelessWidget {
+  const ForgotPasswordPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Forgot Password')),
+      body: const Center(child: Text('Forgot Password Page')),
+    );
+  }
+}
+
+class VerifyOtpPage extends StatelessWidget {
+  const VerifyOtpPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Verify OTP')),
+      body: const Center(child: Text('Verify OTP Page')),
     );
   }
 }
