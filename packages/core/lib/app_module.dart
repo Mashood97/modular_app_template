@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppModule {
@@ -11,8 +13,10 @@ abstract class AppModule {
   /// Optional tab item to show in BottomNavigationBar
   NavigationTab? get navigationTab;
 
-  /// Called once when the module is initialized
-  void init() {}
+  /// Called once when the module is initialized, Passing the GetIt instance from
+  /// the main app i.e. app1, app2, app3 it makes easier to communicate between
+  /// different packages as they will be register app wide.
+  void init(GetIt getIt) {}
 
   LocalizationsDelegate? get localizationDelegate;
 }

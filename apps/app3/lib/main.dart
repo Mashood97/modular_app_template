@@ -1,10 +1,13 @@
 import 'package:authentication/authentication.dart' as AuthModule;
 import 'package:core/app_module.dart';
+import 'package:core/core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:home/home.dart' as HomeModule;
 import 'package:orders/orders.dart' as OrderModule;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+final getIt = GetIt.instance;
 
 void main() => runApp(MyApp());
 
@@ -29,7 +32,9 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     for (final module in activeModules) {
-      module.init(); // THIS IS FOR DI.
+
+
+      module.init(getIt); // THIS IS FOR DI.
       if (module.localizationDelegate != null) {
         localizationDelegates.add(module.localizationDelegate!);
       }

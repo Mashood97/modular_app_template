@@ -1,11 +1,14 @@
 import 'package:authentication/authentication.dart' as AuthModule;
 import 'package:core/app_module.dart';
+import 'package:core/core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:home/home.dart' as HomeModule;
 import 'package:profile/profile.dart' as ProfileModule;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+
+final getIt = GetIt.instance;
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -30,7 +33,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     for (final module in activeModules) {
-      module.init(); //THIS IS DONE FOR DI PART for each package.
+      module.init(getIt); //THIS IS DONE FOR DI PART for each package.
       if (module.localizationDelegate != null) {
         localizationDelegates.add(module.localizationDelegate!);
       }

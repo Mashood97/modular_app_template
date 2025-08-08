@@ -1,4 +1,8 @@
+import 'dart:developer' as developer;
+
 import 'package:core/app_module.dart';
+import 'package:core/core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:orders/l10n/arb/order_localization.dart';
@@ -25,8 +29,11 @@ class OrderModule extends AppModule {
   List<RouteBase> get routes => _appRoutes;
 
   @override
-  void init() {
+  void init(GetIt getIt) {
     //Setup your DI here.
+    if (kDebugMode) {
+      developer.log('DI INIT CALLED FOR :::: $key');
+    }
 
     //  Then wherever you're loading your modules (e.g., AppModulesLoader or AppShell), call:
     //  for (final module in appModules) {

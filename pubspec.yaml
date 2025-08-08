@@ -3,3 +3,6 @@ environment:
   sdk: ">=3.8.1 <4.0.0"
 dev_dependencies:
   melos: ^6.3.3
+
+flutter:
+  generate: true

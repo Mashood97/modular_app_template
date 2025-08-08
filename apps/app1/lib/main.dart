@@ -1,5 +1,6 @@
 import 'package:authentication/authentication.dart' as AuthModule;
 import 'package:authentication/l10n/arb/authentication_localization.dart';
+import 'package:core/core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:home/home.dart' as HomeModule;
 import 'package:orders/orders.dart' as OrderModule;
@@ -7,6 +8,8 @@ import 'package:profile/profile.dart' as ProfileModule;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:core/app_module.dart';
+
+final getIt = GetIt.instance;
 
 void main() => runApp(MyApp());
 
@@ -21,8 +24,8 @@ class _MyAppState extends State<MyApp> {
   final List<AppModule> activeModules = [
     AuthModule.AuthModule(),
     HomeModule.HomeModule(),
-    // OrderModule.OrderModule(),
-    // ProfileModule.ProfileModule(),
+    OrderModule.OrderModule(),
+    ProfileModule.ProfileModule(),
   ];
 
   final tabs = <NavigationTab>[];
@@ -34,7 +37,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     for (final module in activeModules) {
-      module.init(); // FOR DI
+      module.init(getIt); // FOR DI
       if (module.localizationDelegate != null) {
         localizationDelegates.add(module.localizationDelegate!);
       }
